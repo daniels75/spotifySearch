@@ -10,6 +10,7 @@ import { ArtistComponent } from './artist/artist.component';
 import {RouterModule, Routes} from "@angular/router";
 
 const routs: Routes = [
+  {path: '', redirectTo: 'search', pathMatch: 'full'},
   {path: 'search', component: SearchComponent},
   {path: 'artist', component: ArtistComponent},
   {path: 'track', component: TrackComponent},

@@ -1,15 +1,16 @@
+<div class="ui container">
 <h1>Spotify Search</h1>
 
-<app-search></app-search>
-<app-artist></app-artist>
-<app-track></app-track>
-<app-album></app-album>
+<div class="ui breadcrumb">
+  <a class="section active" [routerLink]="['/search']">Search</a>
+  <div class="divider"> / </div>
+  <a class="section" [routerLink]="['/search']">Track</a>
+  <div class="divider"> / </div>
+  <a class="section" [routerLink]="['/artist']">Artist</a>
+  <div class="divider"> / </div>
+  <a class="section" [routerLink]="['/album']">Album</a>
 
-<div>
-  <a [routerLink]="['/search']">Search</a>|
-  <a [routerLink]="['/artist']">Artist</a>|
-  <a [routerLink]="['/album']">Album</a>|
-  <a [routerLink]="['/track']">Track</a>
 </div>
 
 <router-outlet></router-outlet>
+</div>
