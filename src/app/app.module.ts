@@ -7,15 +7,6 @@ import { SearchComponent } from './search/search.component';
 import { AlbumComponent } from './album/album.component';
 import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
-import {RouterModule, Routes} from "@angular/router";
-
-const routs: Routes = [
-  {path: '', redirectTo: 'search', pathMatch: 'full'},
-  {path: 'search', component: SearchComponent},
-  {path: 'artist', component: ArtistComponent},
-  {path: 'track', component: TrackComponent},
-  {path: 'album', component: AlbumComponent}
-]
 
 @NgModule({
   declarations: [
@@ -27,8 +18,7 @@ const routs: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(routs)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
