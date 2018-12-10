@@ -13,8 +13,17 @@
   <div class="ui divider"></div>
 
   <div *ngFor="let result of results">
-    <div>Name: {{result.name}} Id: {{result.id}}<div>
-      <img class="ui small image" src="{{result.imageUrl.url}}">
+    <div class="ui card">
+      <div class="image">
+        <img [src]="result.imageUrl.url">
+      </div>
+      <div class="content">
+        <a class="header">{{result.name}}</a>
+        <div class="description">
+          {{result.id}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
