@@ -4,10 +4,17 @@
   <div class="ui divider"></div>
   <div class="ui action left icon input">
     <i class="search icon"></i>
-    <input id="search" name="search" type="text" placeholder="Search..." #search>
-    <div class="ui teal button" (click)="onClick(search)">Search</div>
+    <input type="text" #search
+           (keyup.enter)="makeSearch(search.value)"
+           id="search" name="search" placeholder="Search...">
+    <div class="ui teal button" (click)="makeSearch(search.value)">Search</div>
   </div>
 
   <div class="ui divider"></div>
+
+  <div *ngFor="let result of results">
+    <div>Name: {{result.name}} Id: {{result.id}}<div>
+      <img class="ui small image" src="{{result.imageUrl.url}}">
+  </div>
 </div>
 

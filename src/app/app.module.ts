@@ -7,6 +7,8 @@ import { SearchComponent } from './search/search.component';
 import { AlbumComponent } from './album/album.component';
 import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
+import {HttpClientModule} from "@angular/common/http";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ArtistComponent } from './artist/artist.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
