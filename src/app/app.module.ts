@@ -9,6 +9,7 @@ import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
 import {HttpClientModule} from "@angular/common/http";
 import {HttpModule} from "@angular/http";
+import {SPOTIFY_PROVIDERS, SpotifyService} from "./spotify.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,11 @@ import {HttpModule} from "@angular/http";
     HttpClientModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: SpotifyService, useClass: SpotifyService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
