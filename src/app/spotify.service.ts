@@ -18,14 +18,13 @@ export class SpotifyService {
 
   }
 
-  makeQuery(url: string, searchParams: string[]): Observable<any[]> {
+  makeQuery(url: string, searchParams?: string[]): Observable<any[]> {
     console.log(`searchParams:  ${searchParams}`);
     let queryUrl: string = `${SpotifyService.BASE_URL}${url}`;
     if (searchParams) {
       queryUrl = `${queryUrl}?${searchParams.join('&')}`
     }
-    const
-      authHeader: Headers = new Headers({
+    const authHeader: Headers = new Headers({
       'Authorization': `Bearer ${Environment.spotifyToken}`
     })
     const options: RequestOptions = new RequestOptions({
@@ -49,6 +48,19 @@ export class SpotifyService {
   findTrack(query: string): Observable<any[]> {
     return this.search(query, 'track')
   }
+
+  findTracks(id: string): Observable<any[]> {
+    return this.makeQuery(`/tracks/${id}`);
+  }
+
+  findArtist(id: string): Observable<any[]> {
+    return this.makeQuery(`/artists/${id}`);
+  }
+
+  findAlbum(id: string): Observable<any[]> {
+    return this.makeQuery(`/albums/${id}`);
+  }
+  
 
 }
 
