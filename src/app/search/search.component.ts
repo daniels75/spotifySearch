@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Headers, Http, RequestOptions} from "@angular/http";
 import {Artist} from "../model/artist";
 
 import 'rxjs/Rx';
 import {SpotifyService} from "../spotify.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -11,14 +11,34 @@ import {SpotifyService} from "../spotify.service";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+  query: string;
   results: Artist[] = [];
-  constructor(private spotifyService: SpotifyService) { }
+
+  constructor(private spotifyService: SpotifyService,
+              private router: Router,
+              private route: ActivatedRoute
+  ) {
+    // this is subscription for /search?query=deep
+    // and fill this.query
+    this.route
+      .queryParams
+      .subscribe(params => {
+          this.query = params['query'] || '';
+          console.log(`Route query: ${this.query}`);
+        }
+      );
+
+  }
 
   ngOnInit() {
   }
 
   makeSearch(search: string) {
+    // navigates from /search to /search?query={search}
+    this.router.navigate(['search'], { queryParams: { query: search } })
+      .then(_ => this.doSearch(search) );
+  }
+  doSearch(search: string) {
     this.results = [];
     if (!search) {
       return;

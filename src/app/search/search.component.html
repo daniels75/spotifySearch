@@ -3,6 +3,7 @@
   <div class="ui action left icon input">
     <i class="search icon"></i>
     <input type="text" #search
+           [value]="query"
            (keyup.enter)="makeSearch(search.value)"
            id="search" name="search" placeholder="Search...">
     <div class="ui teal button" (click)="makeSearch(search.value)">Search</div>
