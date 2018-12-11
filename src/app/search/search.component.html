@@ -14,34 +14,34 @@
 
   <div *ngIf="results">
 
-    <div *ngIf="results.length">
+    <div *ngIf="results.length" class="ui equal width aligned padded grid">
       <div class="row">
-        <div class="col-sm-6 col-md-4" *ngFor="let result of results">
-          <div class="thumbnail">
+        <div *ngFor="let result of results">
+
+          <div class="ui card">
+            <div class="image">
+              <img [src]="result.imageUrl">
+            </div>
             <div class="content">
-              <img src="{{ result.imageUrl }}" class="img-responsive">
-              <div class="caption">
-                <h3>
-                  <a [routerLink]="['/artists', result.artistId]">
-                    {{ result.artistName }}
-                  </a>
-                </h3>
-                <br>
-                <p>
-                  <a [routerLink]="['/tracks', result.id]">
-                    {{ result.name }}
-                  </a>
-                </p>
+              <a class="header">{{ result.albumName }}</a>
+              <div class="meta">
+                <a [routerLink]="['/artists', result.artistId]">
+                  {{ result.artistName }}
+                </a>
               </div>
-              <div class="attribution">
-                <h4>
-                  <a [routerLink]="['/albums', result.albumId]">
-                    {{ result.albumId }}
-                  </a>
-                </h4>
+              <div class="description">
+                <a [routerLink]="['/tracks', result.id]">
+                  {{ result.name }}
+                </a>
               </div>
             </div>
+            <div class="extra content">
+              <a [routerLink]="['/albums', result.albumId]">
+                {{ result.albumName }}
+              </a>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
