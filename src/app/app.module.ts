@@ -9,7 +9,7 @@ import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
 import {HttpClientModule} from "@angular/common/http";
 import {HttpModule} from "@angular/http";
-import {SPOTIFY_PROVIDERS, SpotifyService} from "./spotify.service";
+import {SpotifyService} from "./spotify.service";
 
 @NgModule({
   declarations: [

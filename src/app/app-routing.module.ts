@@ -8,9 +8,9 @@ import {AlbumComponent} from "./album/album.component";
 const routes: Routes = [
   {path: '', redirectTo: 'search', pathMatch: 'full'},
   {path: 'search', component: SearchComponent},
-  {path: 'artist', component: ArtistComponent},
-  {path: 'track', component: TrackComponent},
-  {path: 'album', component: AlbumComponent}
+  {path: 'artists/:id', component: ArtistComponent},
+  {path: 'tracks/:id', component: TrackComponent},
+  {path: 'albums/:id', component: AlbumComponent}
 ]
 
 @NgModule({
