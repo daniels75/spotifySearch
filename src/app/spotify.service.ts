@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import {Observable} from "rxjs";
+import {Environment} from "./environments/environment";
 
 // we can use @Injectable() + declaration in app.module.ts in the section [providers]
 @Injectable()
@@ -23,9 +24,9 @@ export class SpotifyService {
     if (searchParams) {
       queryUrl = `${queryUrl}?${searchParams.join('&')}`
     }
-    const token: string = 'BQB9YDi1oB0D0mfh8lG7oOMZWifFvCl_-O6QGe57zj7j5HqVhrspawIosqSMCc2pOYqNmoE95YQL6N6k2VfB6ap5wYy523fEzAVBdQ-IRaP2GPvZ6FMEVf5e9kLHcJ_N8RB2g7d0uKHLBEX6zscHS56jdBolGB9y';
-    const authHeader: Headers = new Headers({
-      'Authorization': `Bearer ${token}`
+    const
+      authHeader: Headers = new Headers({
+      'Authorization': `Bearer ${Environment.spotifyToken}`
     })
     const options: RequestOptions = new RequestOptions({
       headers: authHeader
