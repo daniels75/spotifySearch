@@ -1,5 +1,3 @@
-
-
 <div class="column">
   <div class="ui divider"></div>
   <div class="ui action left icon input">
@@ -12,18 +10,40 @@
 
   <div class="ui divider"></div>
 
-  <div *ngFor="let result of results">
-    <div class="ui card">
-      <div class="image">
-        <img [src]="result.imageUrl.url">
-      </div>
-      <div class="content">
-        <a class="header">{{result.name}}</a>
-        <div class="description">
-          {{result.id}}
+
+  <div *ngIf="results">
+
+    <div *ngIf="results.length">
+      <div class="row">
+        <div class="col-sm-6 col-md-4" *ngFor="let result of results">
+          <div class="thumbnail">
+            <div class="content">
+              <img src="{{ result.imageUrl }}" class="img-responsive">
+              <div class="caption">
+                <h3>
+                  <a [routerLink]="['/artists', result.artistId]">
+                    {{ result.artistName }}
+                  </a>
+                </h3>
+                <br>
+                <p>
+                  <a [routerLink]="['/tracks', result.id]">
+                    {{ result.name }}
+                  </a>
+                </p>
+              </div>
+              <div class="attribution">
+                <h4>
+                  <a [routerLink]="['/albums', result.albumId]">
+                    {{ result.albumId }}
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
-
