@@ -20,30 +20,39 @@ export class SearchComponent implements OnInit {
 
   makeSearch(search: string) {
     this.results = [];
+    if (!search) {
+      return;
+    }
 
     console.log('search value: ', search);
     this.spotifyService.findTrack(search)
       .subscribe(
-      (queryResults: Object) => {
+      (queryResults: any) => {
         console.log('Results: ', queryResults);
-
-        queryResults['tracks'].items.map(item => {
-          let artist: Artist = new Artist();
-          artist.name = item.name;
-          artist.id = item.id;
-          artist.trackNumber = item.track_number;
-          artist.imageUrl = item.album.images[0];
-
-          this.results.push(artist);
-          console.log('artist: ', artist);
-
-        });
-
+        this.renderResults(queryResults);
       },
       (error: any) => {console.log('Error when trying to retrieve values. ', error)},
       () => {console.log('Request complete.')}
 
     )
+  }
+
+  renderResults(queryResults: any): void {
+    this.results = [];
+    if (queryResults && queryResults.tracks && queryResults.tracks.items) {
+      let resultItems: any = queryResults.tracks.items;
+      resultItems.map(item => {
+        let artist: Artist = new Artist();
+        artist.name = item.name;
+        artist.id = item.id;
+        artist.trackNumber = item.track_number;
+        artist.imageUrl = item.album.images[0];
+
+        this.results.push(artist);
+        console.log('artist: ', artist);
+
+      });
+    }
   }
 
 }

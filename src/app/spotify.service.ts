@@ -60,7 +60,7 @@ export class SpotifyService {
   findAlbum(id: string): Observable<any[]> {
     return this.makeQuery(`/albums/${id}`);
   }
-  
+
 
 }
 
