@@ -9,9 +9,7 @@ import {Location} from "@angular/common";
   styleUrls: ['./track.component.css']
 })
 export class TrackComponent implements OnInit {
-  private id: any;
   private track: any;
-
 
   constructor(private activatedRoute: ActivatedRoute,
               private spotifyService: SpotifyService,
@@ -48,7 +46,7 @@ export class TrackComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
 
 }
 
